@@ -1,0 +1,79 @@
+ An artifact is a file produced as a result of a Jenkins build
+1)   If an artifact is archived, it is copied to the workspace of the build’s job on the Jenkins Master
+2)   An archived file is kept in ${JENKINS_HOME} forever unless it is explicitly deletedB  
+3)   GUI listing on http://<JENKINS_URL>/asynchPeople/
+4)   DB is stored in XML files located in ${JENKINS_HOME}/users
+5)   Credentials to connect different envirnoment like git,sonarqube,jfrog  are encrypted using a key derived from the master key
+6)  This is stored as a secret so it cannot be deserialized to disk as plain text
+
+7) Notifications are posted to the jenkinsci-advisories Google group 
+We recommend that you subscribe to this group to receive timely notifications
+ 8 ) The agent is the tool that manages the executors on a remote node, on behalf of Jenkins.
+9 )A node is taken offline if disk space,swapmemory,timesysnc  cross the configured threshold.
+10) Agents small Java client processes that connect to a Jenkins Master over the Java Network Launch Protocol (JNLP)
+11) Blue Ocean Pipeline Editor is a graphical editor that allows you
+to easily create a Declarative Pipeline.
+13) Jenkins sets its own specific environment variables (such as BUILD_NUMBER, NODE_NAME and JOB_NAME)
+ 
+14)plugin extension  with an hpi or jpi .
+jenkins permession:
+Administer - Make system-wide configuration changes
+
+Perform highly sensitive operations that amount to full local system access (within the scope granted by the underlying operating system)
+
+In versions 5.25 (November 2018) and later, Overall/Administrator does not imply the Overall/RunScripts, Overall/UploadPlugins, and Overall/Configure UpdateCenter permissions
+
+Read - View almost all pages within Jenkins
+
+RunScripts - Run Groovy scripts using the Groovy console or Groovy CLI command
+
+UploadPlugins - Upload arbitrary plugins
+
+Can execute arbitrary code in the context of any Jenkins internal user
+
+ConfigureUpdateCenter - Configure update sites and proxy settings
+
+Can control the update site metadata and plugin files downloaded y the Jenkins plugin manager
+
+Can be used to execute arbitrary code
+
+MORE ABOUT OVERALL/RUNSCRIPTS
+Users with Overall/RunScripts permissions can use the Script Console to run a Groovy script in the Groovy Sandbox without getting administrator approval
+
+Is useful for troubleshooting and diagnostics
+
+Each method call, object construction, and field access is checked against a whitelist of approved operations
+
+If the script attempts to use an unapproved operation, it is killed
+
+The unapproved operation is added to an approval queue which an administrator can review and, if appropriate, can add the operation to the whitelist
+
+CAVEATS FOR OVERALL/RUNSCRIPTS PERMISSIONS
+Users with the "Overall/RunsScripts" permission can execute arbitrary code in the context of any Jenkins internal user, including the internal SYSTEM user
+
+Jenkins Script Console includes valuable security guidelines
+
+Understand Overall Permissions
+
+Administer - Make system-wide configuration changesPerform highly sensitive operations that amount to full local system access (within the scope granted by the underlying operating system)In versions 5.25 (November 2018) and later, Overall/Administrator does not imply the Overall/RunScripts, Overall/UploadPlugins, and Overall/Configure UpdateCenter permissions
+
+Read -View almost all pages within Jenkins
+
+RunScripts - Run Groovy scripts using the Groovy console or Groovy CLI command
+
+UploadPlugins - Upload arbitrary pluginsCan execute arbitrary code in the context of any Jenkins internal user
+
+ConfigureUpdateCenter - Configure update sites and proxy settingsCan control the update site metadata and plugin files downloaded y the Jenkins plugin managerCan be used to execute arbitrary code
+CloudBees University Logo
+
+log types: Build Logs,System Logs
+
+
+
+
+
+Q: We are using our own databases of jenkins.
+Q: Which authorization strategy we are using in jenkins.
+Q: Is it possible multiple agents on single jenkins slave node.
+Q Declaritive and scripted pipeline.
+

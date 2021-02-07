@@ -1,0 +1,11 @@
+https://github.com/ValaxyTech/DevOpsDemos/blob/master/SonarQube/Sonar_Integration_with_Jenkins.MD
+sonal qube scanner
+
+https://www.youtube.com/watch?v=Gu9skLzRSao&list=PLqSjVPK4-tAqvOH_VnNvFa6Wf2k4UQ1nC
+
+https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner
+
+nexus:
+
+https://www.youtube.com/watch?v=Mde05zXu0O4
+
