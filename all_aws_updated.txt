@@ -338,37 +338,20 @@ Open points:
 
 
                                            Upgrading the DB(2)
-A)	Create snapshot and restore ,while restore we can do upgrade [End point will change]
+A)	Create snapshot and restore while restore while restore we can do upgrade [End point will change]
 B)	Modify the DB as based on AZ, storage, class ,instance class type [End port will not change]
 Free	Paid	From aws
 Mysql	Ms-sql	Maria db
 Postgrace sql	Oracle	aurora
  Above all are relational data bases.
 One non relational data base is called Dynamo db by aws.
-                                                         Migration of Database in EC2 Instance to RDS Database:
-Taking the dump from source db :
-
-mysqldump -u root -p ec2db > ec2db.sql  : This command will created ec2db.sql file in source vm where db application is installed .
-
-mysql -h <replace-rds-end-point-here> -P 3306 -u rdsuser -p rdsdb < ec2db.sql : This command will migrate the data from ec2db.sql to rds service.
-mysql -h <replace-rds-end-point-here> -P 3306 -u rdsuser –p : Login to rds services .
-
-
-                                                                      CREATING-RDS-INSTANCE
-              1) create db subnet group first 
-2)Select db engine(ex-mysql)>select version>DB instance class(nano,micro)>select vpc,subnet(group of sub nets we can select this is called db subnetgroup)>select encrypted or not>select uid,pwd> select Backup retention period(7 -35)>enable monitoring (optional)>Automatic version upgard option>Deletion protection option
+            
+                                                                      CREATING-DB
+Select db engine(ex-mysql)>select version>DB instance class(nano,micro)>select vpc,subnet>select encrypted or not>select uidpwd> select Backup retention period(7 -35)>enable monitoring (optional)>Automatic version upgard option>Deletion protection option
 
 1)	We can enable monitoring by default error logs will send to cloud watch(cloud watch group is required)
 2)	Automatically amazon will take back up of db instance. But we should specify the retention period of the db from 7 to 35 days.
 3)	We can see logs in db side no need to go to cloud watch.
-
-4)	While creating the rds that rds realted vms volume will residing in the same AZ.
-5)	We can select ssd for ebs of rds instance. Billing hours and storage.
-6)	Select correct template based on requirement like production/test
-7)	Transactions are stored in s3 bucked every 5 miutes.
-8)	If you delete the data base it can be retained until it will not expired(Retension period)
-
-
 Automatic Backup	Manual Backup
 1)At any time backup will available in Amazon
 2)Automatic day backup is a full daily snapshots and will also store transaction logs throughout the day
@@ -381,22 +364,6 @@ Ex: If we have rds instance of 10 gb we will get 10gb worth of storage.
 6) Backup are taking within a defined window during the backup window storage i/o may be suspended . So while your data  is being backup you may experience some the elevated latency.	1) Manual backup is user created backup this should specify the retention period.
 2) Only specific time we can restore.
 3) Even user deleted rds instance also manual backup is available.
-4) This snap shots should delete manually
-
-                                                       Synchronus  Replication.(MULti az)
-
-In this replication separate Stand By replica is available for with same capacity.
-this can be in same region or different region
-We cannot access this via RDS.
-IF  anything happen to the primary then only secondary will act as primary.
-we can take backup from standby.
-
-
-
-RPO(Recovery point objective)= (Failure occursed time stamp) –(last-bacup-time stamp)
-RTO(Recovery time objective)= DR-Full restore.
-
-
 
 
 
